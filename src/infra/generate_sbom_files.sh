@@ -1,4 +1,7 @@
 #!/bin/bash
+
+mkdir -p ../../sbom_files
+
 docker exec infra_base_image /bin/bash -c "rm -f /app_python/syft.python.sbom.json"
 docker exec infra_base_image /bin/bash -c "rm -f /app_python/cyclone.python.sbom.json"
 docker exec infra_base_image /bin/bash -c "rm -f /app_dotnet/syft.dotnet.sbom.json"
