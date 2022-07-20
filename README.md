@@ -16,6 +16,7 @@ __Make sure to run this image from a Linux environment__
 ```
 git clone https://github.com/dszortyka/devsecops_challenge01.git
 cd devsecops_challenge01/src/infra
+docker pull centos:8
 docker-compose build
 ```
 
