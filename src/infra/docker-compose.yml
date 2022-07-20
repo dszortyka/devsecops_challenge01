@@ -1,0 +1,42 @@
+version: '3'
+
+volumes:
+  sbom-python:
+  sbom-java:
+  sbom-dotnet:
+
+services:
+  app_python:
+    build:
+      context: ./app_python
+      dockerfile: Dockerfile
+    image: infra_app_python:latest
+    container_name: infra_app_python
+    volumes:
+      - "sbom-python:/shared-volume"
+  app_java:
+    build:
+      context: ./app_java
+      dockerfile: Dockerfile
+    image: infra_app_java:latest
+    container_name: infra_app_java
+    volumes:
+      - "sbom-java:/shared-volume"
+  app_dotnet:
+    build:
+      context: ./app_dotnet
+      dockerfile: Dockerfile
+    image: infra_app_dotnet:latest
+    container_name: infra_app_dotnet
+    volumes:
+      - "sbom-dotnet:/shared-volume"
+  base_image:
+    build:
+      context: ./base_image
+      dockerfile: Dockerfile
+    image: infra_base_image:latest
+    container_name: infra_base_image
+    volumes:
+      - "sbom-python:/app_python"
+      - "sbom-java:/app_java"
+      - "sbom-dotnet:/app_dotnet"
